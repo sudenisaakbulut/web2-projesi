@@ -1,8 +1,6 @@
 # sudenisaakbulut-22902003-Sude-Nisa_Akbulut-Web2
 # YAZ307 - Web Programlama II - Üyelik ve Yönetim Sistemi Projem
 
-# 🌐 YAZ307 - Web Programlama II: Üyelik ve Yönetim Sistemi
-
 Bu proje, **Kapadokya Üniversitesi Yönetim Bilişim Sistemleri Bölümü YAZ307 Web Programlama II** dersi kapsamında geliştirilmiş bireysel dönem projesidir. PHP ve MySQL mimarisi kullanılarak dinamik, güvenli ve oturum yönetimi içeren bir üyelik ve yetkilendirme sistemi tasarlanmıştır.
 
 🔗 **Canlı Demo:** [web2-projesi.free.nf](http://web2-projesi.free.nf)
