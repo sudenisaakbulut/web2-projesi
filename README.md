@@ -1,54 +1,70 @@
 # sudenisaakbulut-22902003-Sude-Nisa_Akbulut-Web2
 # YAZ307 - Web Programlama II - Üyelik ve Yönetim Sistemi Projem
 
-Bu proje, **Kapadokya Üniversitesi Yönetim Bilişim Sistemleri YAZ307 Web Programlama II** dersi için hazırladığım bireysel proje ödevidir.
+# 🌐 YAZ307 - Web Programlama II: Üyelik ve Yönetim Sistemi
 
-[cite_start]Bu projede PHP ve MySQL kullanarak **dinamik, güvenli ve oturum yönetimi içeren bir Üyelik ve Yönetim Sistemi** geliştirdim[cite: 6].
+Bu proje, **Kapadokya Üniversitesi Yönetim Bilişim Sistemleri Bölümü YAZ307 Web Programlama II** dersi kapsamında geliştirilmiş bireysel dönem projesidir. PHP ve MySQL mimarisi kullanılarak dinamik, güvenli ve oturum yönetimi içeren bir üyelik ve yetkilendirme sistemi tasarlanmıştır.
 
-## ✨ Projenin Kapsamı ve Uyguladığım Güvenlik Önlemleri
+🔗 **Canlı Demo:** [web2-projesi.free.nf](http://web2-projesi.free.nf)
 
-Projemde, dersin teknik şartnamesine uygun olarak aşağıdaki kritik işlevleri başarıyla uyguladım:
+---
+
+## 🚀 Projenin Kapsamı ve Güvenlik Önlemleri
+
+Teknik şartname gereksinimlerine uygun olarak projede uygulanan temel işlevler:
 
 ### A. Güvenlik ve Veritabanı İşlemleri
-1.  [cite_start]**Güvenli Şifreleme (Hashing):** Kullanıcı şifrelerini veritabanına kaydederken düz metin yerine **`password_hash()`** fonksiyonunu kullanarak şifreledim[cite: 29].
-2.  [cite_start]**E-posta Tekrar Kontrolü:** Kayıt (Register) işlemi sırasında, aynı e-posta adresiyle tekrar kayıt olunmasını engelledim[cite: 28].
-3.  [cite_start]**last_login Güncellemesi:** Kullanıcı girişi başarılı olduğunda, veritabanındaki **`last_login`** sütununu o anki zaman (NOW()) ile otomatik olarak güncelledim[cite: 31].
-4.  [cite_start]**Oturum Güvenliği:** Sisteme giriş yapan kullanıcının oturumunu **`session_start()`** ile başlattım[cite: 32].
+* **Güvenli Şifreleme (Hashing):** Kullanıcı şifreleri veritabanına açık metin olarak kaydedilmez; PHP'nin `password_hash()` fonksiyonu ile tek yönlü olarak hashlenerek saklanır.
+* **E-posta Benzersizlik Kontrolü:** Kayıt (`register.php`) sırasında girilen e-postanın veritabanında bulunup bulunmadığı sorgulanır ve mükerrer kayıtlar engellenir (`UNIQUE KEY`).
+* **Son Giriş Tarihi (`last_login`):** Kullanıcı kimlik doğrulaması başarılı olduğunda, veritabanındaki `last_login` sütunu `NOW()` fonksiyonu ile güncellenir.
+* **Oturum Güvenliği:** Oturum başlangıcı `session_start()` ile standardize edilmiş, giriş yapan kullanıcı verileri oturum değişkenlerine (`$_SESSION`) güvenle aktarılmıştır.
 
 ### B. Oturum Yönetimi ve Yetkilendirme
-1.  **İzinsiz Erişim Engelleme:** `dashboard.php` ve `profile.php` gibi özel sayfaları koruma altına aldım. [cite_start]Giriş yapmamış bir kullanıcı bu sayfalara URL üzerinden ulaşmaya çalışırsa, otomatik olarak `login.php` sayfasına yönlendirilir[cite: 33].
-2.  [cite_start]**Kişisel Bilgi Gösterimi:** `profile.php` sayfasında, giriş yapmış kullanıcının kendi bilgilerini (Ad, Soyad, Okul No ve Son Giriş Tarihi) veritabanından çekerek listeledim[cite: 34].
-3.  [cite_start]**Güvenli Çıkış:** `logout.php` dosyasını kullanarak tüm oturumları güvenli bir şekilde sonlandırdım (`session_destroy`)[cite: 35].
+* **İzinsiz Erişim Engelleme:** `dashboard.php` ve `profile.php` gibi özel sayfalar yetkilendirme kontrolüne tabi tutulmuştur. Aktif bir oturumu bulunmayan kullanıcılar doğrudan `login.php` sayfasına yönlendirilir.
+* **Dinamik Veri Gösterimi:** `profile.php` sayfasında, giriş yapmış olan kullanıcının Ad, Soyad, Öğrenci Numarası ve Son Giriş Tarihi bilgileri veritabanından çekilerek listelenir.
+* **Güvenli Oturum Kapatma:** `logout.php` dosyası üzerinden `session_destroy()` ve `$_SESSION = array()` komutlarıyla oturum verileri tamamen sıfırlanır.
 
-## 📂 Dosya Yapısı
+---
 
-Proje klasörümde, şartnamede belirtilen tüm zorunlu dosyalar bulunmaktadır:
+## 📁 Dosya Yapısı
 
 | Dosya Adı | Açıklama |
 | :--- | :--- |
-| `db.php` | Veritabanı bağlantı ayarlarını (PDO) içeriyor. |
-| `index.php` | Projenin ana karşılama sayfası (Login ve Register yönlendirmeleri). |
-| `register.php` | Yeni kullanıcı kayıt formunu ve veriyi işleyen arka uç kodlarını içeriyor. |
-| `login.php` | Kullanıcı giriş formunu, doğrulamasını ve `last_login` güncellemesini yapıyor. |
-| `dashboard.php` | Giriş yapmış kullanıcılar için yetkili ana panel. |
-| `profile.php` | Kullanıcı bilgilerinin gösterildiği sayfa. |
-| `logout.php` | Güvenli çıkış ve oturum sonlandırma kodu. |
-| **`system_db.sql`** | [cite_start]Veritabanımın yedeği (Export dosyası)[cite: 14, 17]. |
-| `style.css` | Temel tasarımları ve form yapısını düzenlediğim CSS dosyası. |
+| `db.php` | Merkezi PDO veritabanı bağlantı ayarları |
+| `index.php` | Karşılama ve ana yönlendirme sayfası (Giriş & Kayıt) |
+| `register.php` | Kullanıcı kayıt formu ve arka uç veri işleme mekanizması |
+| `login.php` | Kullanıcı kimlik doğrulama ve `last_login` güncelleme ekranı |
+| `dashboard.php` | Yetkili kullanıcılar için korumalı ana kontrol paneli |
+| `profile.php` | Oturum açan kullanıcının profil bilgilerini gösteren sayfa |
+| `logout.php` | Güvenli oturum sonlandırma ve yönlendirme dosyası |
+| `system_db.sql` | Veritabanı şeması ve test verilerini içeren SQL yedeği |
+| `style.css` | Arayüz stillerini ve form düzenlerini barındıran CSS dosyası |
 
-## 🛠️ Veritabanı Detayları
+---
 
-[cite_start]Projeyi kurarken kullandığım veritabanı ayarları şunlardır[cite: 17, 18]:
+## 🛠️ Veritabanı Mimarisi
 
 * **Veritabanı Adı:** `system_db`
 * **Tablo Adı:** `users`
-* **Önemli Sütunlar:** `email` (**UNIQUE**), `password` (Hashlenmiş), `last_login` (DATETIME/TIMESTAMP)[cite: 24, 25, 26].
+* **Kritik Alanlar:**
+  * `email` (`VARCHAR`, UNIQUE)
+  * `password` (`VARCHAR(255)`, Hashlenmiş)
+  * `last_login` (`DATETIME` / `TIMESTAMP`)
 
-## 💻 Kurulum ve Çalıştırma
+---
 
-Projenin çalışması için XAMPP ortamı gerekmektedir.
+## 💻 Yerel Kurulum (Localhost)
 
-1.  **XAMPP Başlatma:** XAMPP Kontrol Panelinde **Apache** ve **MySQL** servislerini başlattım.
-2.  **Veritabanı Oluşturma:** `system_db.sql` dosyasını `localhost/phpmyadmin` üzerinden içe aktararak `system_db` veritabanını oluşturdum.
-3.  **Ayarlar:** `db.php` dosyasındaki veritabanı adı (`system_db`), kullanıcı adı (`root`) ve şifre (`''` - varsayılan boş) bilgilerini kontrol ettim.
-4.  **Çalıştırma:** Projeyi `http://localhost/webprogramlamaa/index.php` adresinden başlattım.
+Projeyi yerel geliştirme ortamında çalıştırmak için:
+
+1. **XAMPP Servislerini Başlatın:** XAMPP Kontrol Paneli üzerinden **Apache** ve **MySQL** servislerini aktif edin (`Start`).
+2. **Veritabanını İçe Aktarın:** 
+   * `http://localhost/phpmyadmin` adresine gidin.
+   * `system_db` adında yeni bir veritabanı açın.
+   * `system_db.sql` dosyasını bu veritabanı içerisine içe aktarın (**Import**).
+3. **Bağlantı Ayarlarını Doğrulayın:** `db.php` dosyasındaki yerel bağlantı bilgilerinin ortamınızla eşleştiğinden emin olun:
+   ```php
+   $host = "localhost";
+   $dbname = "system_db";
+   $username = "root";
+   $password = "";nden başlattım.
