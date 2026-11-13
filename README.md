@@ -5,6 +5,16 @@ Bu proje, **Kapadokya Üniversitesi Yönetim Bilişim Sistemleri Bölümü YAZ30
 
 🔗 **Canlı Demo:** [web2-projesi.free.nf](http://web2-projesi.free.nf)
 
+## 📸 Ekran Görüntüleri
+<p align="center">
+ <img width="1909" height="1073" alt="Ekran Görüntüsü (6)" src="https://github.com/user-attachments/assets/5b1b84f2-772d-4bc8-a865-ab5f4336ed03" />
+<img width="1909" height="1071" alt="Ekran Görüntüsü (5)" src="https://github.com/user-attachments/assets/574b194b-d45d-4c97-a923-b3f19f4a20a8" />
+<img width="1920" height="1069" alt="Ekran Görüntüsü (4)" src="https://github.com/user-attachments/assets/44fd21f6-96da-41f2-94bd-758ccb54583c" />
+<img width="1918" height="1075" alt="Ekran Görüntüsü (3)" src="https://github.com/user-attachments/assets/c05e7b61-043d-4847-b07a-36f2459b28e7" />
+<img width="1920" height="1069" alt="Ekran Görüntüsü (2)" src="https://github.com/user-attachments/assets/1be49eb7-27e4-4529-ab55-1ef1a4492693" />
+<img width="1913" height="1069" alt="Ekran Görüntüsü (7)" src="https://github.com/user-attachments/assets/b9c28244-9db3-4d7a-911b-a813c7ce8b21" />
+
+ </p>
 ---
 
 ## 🚀 Projenin Kapsamı ve Güvenlik Önlemleri
